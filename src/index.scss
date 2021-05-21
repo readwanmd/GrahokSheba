@@ -1,0 +1,79 @@
+@import './scss/reset';
+@import './scss/fonts';
+@import './scss/variable';
+@import './scss/mixin';
+@import './scss/responsive';
+
+body {
+	font-family: 'Poppins', sans-serif;
+	color: $text-color;
+}
+
+.navbar {
+	@include container;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__menu-btn {
+		cursor: pointer;
+		position: absolute;
+		top: 20px;
+		right: 30px;
+		display: none;
+		& img {
+			width: 30px;
+			height: auto;
+		}
+	}
+
+	&__logo {
+		& img {
+			width: auto;
+			height: 70px;
+		}
+	}
+
+	&__items {
+		width: 55%;
+
+		& ul {
+			display: flex;
+			justify-content: flex-end;
+
+			& li {
+				& a {
+					position: relative;
+					display: block;
+					margin: 0 20px;
+					padding: 5px 10px;
+					color: $text-color;
+					font-weight: 400;
+					transition: 0.5s;
+
+					&::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-top: 2px solid $secondary-color;
+						border-bottom: 2px solid $secondary-color;
+						transform: scaleY(1.5);
+						opacity: 0;
+						transition: 0.5s;
+					}
+					&:hover {
+						color: $primary-color;
+					}
+					&:hover::before {
+						transform: scaleY(1);
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+}
